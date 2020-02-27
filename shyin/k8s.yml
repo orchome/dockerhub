@@ -13,8 +13,6 @@ spec:
       labels:
         app: jenkins-k8s-cicd
     spec:
-      imagePullSecrets:
-        - name: mysecret
       containers:
         - image: uhub.ucloud.cn/jenkins_k8s_cicd/jenkins_k8s_cicd:<BUILD_TAG>
           imagePullPolicy: IfNotPresent
@@ -22,3 +20,5 @@ spec:
         env:
           - name: branch
             value: <BRANCH_NAME>
+      imagePullSecrets:
+        - name: mysecret
