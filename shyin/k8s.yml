@@ -14,7 +14,7 @@ spec:
         app: jenkins-k8s-cicd
     spec:
       containers:
-        - image: uhub.ucloud.cn/shyin/jenkins_k8s_cicd:<BUILD_TAG>
+        - image: uhub.service.ucloud.cn/shyin/jenkins_k8s_cicd:<BUILD_TAG>
           imagePullPolicy: IfNotPresent
           name: jenkins-k8s-cicd
       imagePullSecrets:
