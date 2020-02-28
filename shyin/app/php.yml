@@ -34,6 +34,7 @@ spec:
             - name: code
               mountPath: /code
           command:
-            - mv
-            - "/data/app"
-            - "/code"
+            - wget
+            - "-O"
+            - "/code/index.php"
+            - https://raw.githubusercontent.com/do-community/php-kubernetes/master/index.php
