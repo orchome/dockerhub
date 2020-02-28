@@ -1,0 +1,56 @@
+<!DOCTYPE html><html><head><title></title><meta charset=utf-8><meta http-equiv=Content-type content="text/html; charset=utf-8"><meta name=format-detection content="telephone=no"><meta name=apple-mobile-web-app-capable content=yes><meta name=apple-mobile-web-app-status-bar-style content=black><script src="/config.js?v=2"></script><link rel=stylesheet href=//at.alicdn.com/t/font_904291_439rz10vkh1.css><script src=//res.shiyin.net/reshu/static/polyfill.min.js></script><script>!(function (e) {
+        function t(a) {
+          if (i[a]) 
+            return i[a].exports;
+          var n = (i[a] = {
+            exports: {},
+            id: a,
+            loaded: !1
+          });
+          return (e[a].call(n.exports, n, n.exports, t), (n.loaded = !0), n.exports);
+        }
+
+        var i = {};
+        return (t.m = e),
+        (t.c = i),
+        (t.p = ''),
+        t(0);
+      })([
+        function (e, t) {
+          'use strict';
+          Object.defineProperty(t, '__esModule', {
+            value: !0
+          });
+          var i = window;
+          (t['default'] = i.flex = function (e, t) {
+            var a = e || 100,
+              n = t || 1,
+              r = i.document,
+              o = navigator.userAgent,
+              d = o.match(/Android[\S\s]+AppleWebkit\/(\d{3})/i),
+              l = o.match(/U3\/((\d+|\.){5,})/i),
+              c = l && parseInt(l[1].split('.').join(''), 10) >= 80,
+              p = navigator
+                .appVersion
+                .match(/(iphone|ipad|ipod)/gi),
+              s = i.devicePixelRatio || 1;
+            p || (d && d[1] > 534) || c || (s = 1);
+            var u = 1 / s,
+              m = r.querySelector('meta[name="viewport"]');
+            m || ((m = r.createElement('meta')), m.setAttribute('name', 'viewport'), r.head.appendChild(m)),
+            m.setAttribute('content', 'width=device-width,user-scalable=no,initial-scale=' + u + ',maximum-scale=' + u + ',minimum-scale=' + u),
+            (r.documentElement.style.fontSize = (a / 2) * s * n + 'px');
+          }),
+          (e.exports = t['default']);
+        }
+      ]);
+      flex(100, 1);</script><link href=//retail-store.jinhuyu.com/new-hk/static/css/app.d6eea6fc84f66900b05a63a527d6f9e9.css rel=stylesheet></head><body><div id=app></div><script src=//res.shiyin.net/reshu/vue.min.js></script><script src=//res.shiyin.net/reshu/vue-router.min.js></script><script src=//res.shiyin.net/reshu/vuex.min.js></script><script src=//res.shiyin.net/reshu/index.js></script><script type=text/javascript src=//retail-store.jinhuyu.com/new-hk/static/js/manifest.0ee093e83e8b5ad4c463.js></script><script type=text/javascript src=//retail-store.jinhuyu.com/new-hk/static/js/vendor.f2125a7a100aaed243ef.js></script><script type=text/javascript src=//retail-store.jinhuyu.com/new-hk/static/js/app.f049b3e200eb89c7aec3.js></script></body><script>window.onload = function () {
+      document.addEventListener('error', function (e) {
+        let elem = e.target;
+        if (!elem) 
+          return;
+        if (elem.tagName.toLowerCase() === 'img') {
+          elem.src = '//res.shiyin.net/reshu/static/error2.png';
+        }
+      }, true);
+    };</script></html>
