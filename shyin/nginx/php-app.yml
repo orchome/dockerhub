@@ -29,11 +29,11 @@ spec:
             name: nginx-conf
       containers:
         - name: php-app
-          image: uhub.service.ucloud.cn/shyin/php-nginx:1
+          image: uhub.service.ucloud.cn/shyin/php-nginx:4
           command:
             - /bin/sh
             - -c
-            - mkdir -p /var/log/nginx/ && ls nginxconf && mv /usr/local/nginx/conf/nginx.conf /usr/local/nginx/conf/nginx.conf_bak && cp nginxconf/nginx.conf /usr/local/nginx/conf/ && cat /usr/local/nginx/conf/nginx.conf && /usr/local/nginx/sbin/nginx -g 'daemon off;' && while true;do date;sleep 360000;done
+            - mkdir -p /var/log/nginx/ && ls nginxconf && mv /usr/local/nginx/conf/nginx.conf /usr/local/nginx/conf/nginx.conf_bak && cp nginxconf/nginx.conf /usr/local/nginx/conf/ && cat /usr/local/nginx/conf/nginx.conf && while true;do date;sleep 360000;done && /usr/local/nginx/sbin/nginx -g 'daemon off;'
           volumeMounts:
             - name: config
               mountPath: /etc/nginx/conf.d
