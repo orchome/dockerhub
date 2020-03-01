@@ -1,7 +1,11 @@
-FROM uhub.service.ucloud.cn/shyin/base:0
-RUN mkdir -p /data/download
-RUN yum install -y wget && wget -P /data/download http://nginx.org/download/nginx-1.13.7.tar.gz
-COPY v0.10.11.tar.gz /data/download
-COPY v0.3.0.tar.gz /data/download
+FROM hub.c.163.com/library/centos:latest
 
-# docker build -t uhub.service.ucloud.cn/shyin/php-nginx:0 .
+RUN echo "Asia/shanghai" > /etc/timezone;
+RUN cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+
+ENV LANG en_US.UTF-8
+
+RUN yum update -y
+RUN yum -y install php-fpm php php-gd php-mysql php-mbstring php-xml php-mcrypt  php-imap php-odbc php-pear php-xmlrpc
+
+# docker build -t uhub.service.ucloud.cn/shyin/php:0 . --network=host
