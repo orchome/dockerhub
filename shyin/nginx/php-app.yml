@@ -29,7 +29,7 @@ spec:
             name: nginx-conf
       containers:
         - name: php-app
-          image: uhub.service.ucloud.cn/shyin/php-nginx:4
+          image: uhub.service.ucloud.cn/shyin/php-nginx:8
           command:
             - /bin/sh
             - -c
