@@ -1,4 +1,4 @@
-FROM uhub.service.ucloud.cn/shyin/php-nginx:0
+FROM uhub.service.ucloud.cn/shyin/php-nginx-snapshot:0
 
 RUN yum install -y unzip lua-devel
 
@@ -10,5 +10,5 @@ RUN chmod +x /usr/local/software/lua-install.sh
 RUN /usr/local/software/lua-install.sh
 RUN /usr/local/software/nginx-install.sh
 
-# docker build -t uhub.service.ucloud.cn/shyin/php-nginx:6 . --network=host
-# docker push uhub.service.ucloud.cn/shyin/php-nginx:6
+# docker build -t uhub.service.ucloud.cn/shyin/php-nginx-snapshot:1 . --network=host
+# docker push uhub.service.ucloud.cn/shyin/php-nginx-snapshot:1

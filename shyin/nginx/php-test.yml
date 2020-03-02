@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: php-test
+  namespace: nginx
+  labels:
+    tier: backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: php-test
+      tier: backend
+  template:
+    metadata:
+      labels:
+        app: php-test
+        tier: backend
+    spec:
+      volumes:
+        - name: config
+          configMap:
+            name: nginx-config
+            items:
+              - key: config
+                path: site.conf
+        - name: conf
+          configMap:
+            name: nginx-conf
+      containers:
+        - name: php-test
+          image: uhub.service.ucloud.cn/shyin/php-snapshot:0
+          command:
+            - /bin/sh
+            - -c
+            - while true;do date;sleep 360000;done
+          volumeMounts:
+            - name: config
+              mountPath: /etc/nginx/conf.d
+            - name: conf
+              mountPath: /nginxconf
+      imagePullSecrets:
+        - name: mysecret

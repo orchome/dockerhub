@@ -19,3 +19,5 @@ spec:
           name: jenkins-k8s-cicd
       imagePullSecrets:
         - name: mysecret
+
+  ## kubectl create secret docker-registry mysecret --docker-server=uhub.service.ucloud.cn --docker-username=263230286@qq.com --docker-password=shyinwork -n jenkins
