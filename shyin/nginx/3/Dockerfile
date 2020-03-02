@@ -14,11 +14,11 @@ RUN cd /usr/local/lib/ && unzip lua-lib.zip && rm -rf /usr/local/lib/lua-lib.zip
 RUN mkdir -p /usr/local/php/etc/php-fpm.d
 COPY www.conf /usr/local/php/etc/php-fpm.d/
 COPY www.conf.default /usr/local/php/etc/php-fpm.d/
+RUN echo "include=/usr/local/php/etc/php-fpm.d/*.conf" >> /etc/php-fpm.d/www.conf
 
 RUN mkdir -p /data/web/CPS-mobile/dist
 COPY demo.zip /data/web/CPS-mobile/dist
 RUN cd /data/web/CPS-mobile/dist && unzip demo.zip && rm -rf /data/web/CPS-mobile/dist/demo.zip
-RUN echo "include=/usr/local/php/etc/php-fpm.d/*.conf" >> /usr/local/php/etc/php-fpm.conf
 
 # docker build -t uhub.service.ucloud.cn/shyin/php-nginx:8 . --network=host
 # docker push uhub.service.ucloud.cn/shyin/php-nginx:8
