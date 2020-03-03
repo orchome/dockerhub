@@ -1,2 +1,4 @@
-FROM php:7.2-fpm
-COPY demo /data/app/
+FROM uhub.service.ucloud.cn/shyin/app-release:0
+
+# 将项目放到指定的镜像位置中
+ADD webproject.tar.gz /data/web/
