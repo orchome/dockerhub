@@ -39,7 +39,7 @@ spec:
           command:
             - /bin/sh
             - -c
-            - mv /usr/local/nginx/conf/nginx.conf /usr/local/nginx/conf/nginx.conf_bak && cp nginxconf/nginx.conf /usr/local/nginx/conf/ && cat /usr/local/nginx/conf/nginx.conf && /usr/local/php/sbin/php-fpm && /usr/local/nginx/sbin/nginx -g 'daemon off;'
+            - mkdir -p /var/log/nginx/ && ls nginxconf && mv /usr/local/nginx/conf/nginx.conf /usr/local/nginx/conf/nginx.conf_bak && cp nginxconf/nginx.conf /usr/local/nginx/conf/ && cat /usr/local/nginx/conf/nginx.conf && /usr/local/php/sbin/php-fpm && /usr/local/nginx/sbin/nginx -g 'daemon off;'
           volumeMounts:
             - name: config
               mountPath: /etc/nginx/conf.d
