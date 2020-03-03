@@ -35,7 +35,7 @@ spec:
             name: backend-web
       containers:
         - name: php-app
-          image: uhub.service.ucloud.cn/shyin/php-nginx-snapshot:<BUILD_TAG>
+          image: uhub.service.ucloud.cn/shyin/php:<BUILD_TAG>
           command:
             - /bin/sh
             - -c
