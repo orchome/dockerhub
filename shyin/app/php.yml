@@ -4,23 +4,26 @@ metadata:
   name: <APP_NAME>
   namespace: nginx
   labels:
-    tier: backend
+    app: <APP_NAME>
 spec:
   replicas: <APP_NUMBER>
   selector:
     matchLabels:
       app: <APP_NAME>
-      tier: backend
   template:
     metadata:
       labels:
         app: <APP_NAME>
-        tier: backend
     spec:
-      volumes:
-        - name: conf
-          configMap:
-            name: nginx-conf
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            - preference:
+                matchExpressions:
+                  - key: area
+                    operator: In
+                    values:
+                      - A
       containers:
         - name: <APP_NAME>
           image: uhub.service.ucloud.cn/shyin/php:<BUILD_TAG>
@@ -28,8 +31,5 @@ spec:
             - /bin/sh
             - -c
             - mkdir -p /var/log/nginx/ && cat /usr/local/nginx/conf/nginx.conf && /usr/local/php/sbin/php-fpm && /usr/local/nginx/sbin/nginx -g 'daemon off;'
-          volumeMounts:
-            - name: conf
-              mountPath: /nginxconf
       imagePullSecrets:
         - name: mysecret
