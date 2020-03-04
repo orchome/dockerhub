@@ -14,12 +14,13 @@ spec:
     metadata:
       labels:
         app: <APP_NAME>
+        version: <BUILD_TAG>
     spec:
       affinity:
         nodeAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
-            - preference:
-                matchExpressions:
+            nodeSelectorTerms:
+              - matchExpressions:
                   - key: area
                     operator: In
                     values:
