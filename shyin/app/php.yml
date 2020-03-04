@@ -24,7 +24,7 @@ spec:
                   - key: area
                     operator: In
                     values:
-                      - A
+                      - <AREA>
       containers:
         - name: <APP_NAME>
           image: uhub.service.ucloud.cn/shyin/php:<BUILD_TAG>
