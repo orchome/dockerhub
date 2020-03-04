@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: php-app
+  name: <APP_NAME>
   namespace: nginx
   labels:
     tier: backend
 spec:
-  replicas: 1
+  replicas: <APP_NUMBER>
   selector:
     matchLabels:
-      app: php-app
+      app: <APP_NAME>
       tier: backend
   template:
     metadata:
       labels:
-        app: php-app
+        app: <APP_NAME>
         tier: backend
     spec:
       volumes:
@@ -34,7 +34,7 @@ spec:
           configMap:
             name: backend-web
       containers:
-        - name: php-app
+        - name: <APP_NAME>
           image: uhub.service.ucloud.cn/shyin/php:<BUILD_TAG>
           command:
             - /bin/sh
