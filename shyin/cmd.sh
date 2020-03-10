@@ -1,6 +1,7 @@
 kubectl exec -ti -n nginx `kubectl get pods -n nginx|grep Running|grep php-app|awk '{print $1}'` /bin/bash
 kubectl exec -ti -n nginx `kubectl get pods -n nginx|grep Running|grep php-test|awk '{print $1}'` /bin/bash
 
+## kubectl create clusterrolebinding jenkins --clusterrole cluster-admin --serviceaccount=jenkins:jenkins2
 ## kubectl create secret docker-registry mysecret --docker-server=uhub.service.ucloud.cn --docker-username=263230286@qq.com --docker-password=shyinwork -n jenkins
 
 ## 广东
