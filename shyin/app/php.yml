@@ -30,7 +30,7 @@ spec:
           image: uhub.service.ucloud.cn/shyin/php:<BUILD_TAG>
           volumeMounts:
             - name: commons
-              mountPath: /data/commons
+              mountPath: /shares
           command:
             - /bin/sh
             - -c
