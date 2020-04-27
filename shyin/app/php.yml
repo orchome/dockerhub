@@ -28,9 +28,16 @@ spec:
       containers:
         - name: <APP_NAME>
           image: uhub.service.ucloud.cn/shyin/php:<BUILD_TAG>
+          volumeMounts:
+            - name: commons
+              mountPath: /data/commons
           command:
             - /bin/sh
             - -c
             - mkdir -p /var/log/nginx/ && cat /usr/local/nginx/conf/nginx.conf && /usr/local/php/sbin/php-fpm && /usr/local/nginx/sbin/nginx -g 'daemon off;'
       imagePullSecrets:
         - name: mysecret
+      volumes:
+        - name: commons
+          persistentVolumeClaim:
+            claimName: app-common-pvc-claim
