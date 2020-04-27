@@ -40,4 +40,4 @@ spec:
       volumes:
         - name: commons
           persistentVolumeClaim:
-            claimName: xhy-pvc-claim
+            claimName: app-ufs-claim
