@@ -27,7 +27,7 @@ spec:
                       - <AREA>
       containers:
         - name: <APP_NAME>
-          image: uhub.service.ucloud.cn/shyin/php:<BUILD_TAG>
+          image: uhub.service.ucloud.cn/shyin/<APP_NAME>:<BUILD_TAG>
           volumeMounts:
             - name: commons
               mountPath: /shares
