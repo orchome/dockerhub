@@ -29,8 +29,8 @@ spec:
         - name: <APP_NAME>
           image: uhub.service.ucloud.cn/shyin/<APP_NAME>:<BUILD_TAG>
           volumeMounts:
-            - name: commons
-              mountPath: /shares
+            - name: shares
+              mountPath: /data/shares
           command:
             - /bin/sh
             - -c
@@ -38,6 +38,6 @@ spec:
       imagePullSecrets:
         - name: mysecret
       volumes:
-        - name: commons
+        - name: shares
           persistentVolumeClaim:
-            claimName: app-ufs-claim
+            claimName: app-shares-pvc-claim
