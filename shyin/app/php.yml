@@ -1,40 +1,43 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: php
+  name: <APP_NAME>
   namespace: nginx
   labels:
-    tier: backend
+    app: <APP_NAME>
 spec:
-  replicas: 1
+  replicas: <APP_NUMBER>
   selector:
     matchLabels:
-      app: php
-      tier: backend
+      app: <APP_NAME>
   template:
     metadata:
       labels:
-        app: php
-        tier: backend
+        app: <APP_NAME>
+        version: <BUILD_TAG>
     spec:
-      volumes:
-        - name: code
-          persistentVolumeClaim:
-            claimName: php-pvc-claim
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: area
+                    operator: In
+                    values:
+                      - <AREA>
       containers:
-        - name: php
-          image: uhub.service.ucloud.cn/shyin/php:<BUILD_TAG>
+        - name: <APP_NAME>
+          image: uhub.service.ucloud.cn/shyin/<APP_NAME>:<BUILD_TAG>
           volumeMounts:
-            - name: code
-              mountPath: /code
-      initContainers:
-        - name: install
-          image: busybox
-          volumeMounts:
-            - name: code
-              mountPath: /code
+            - name: shares
+              mountPath: /data/shares
           command:
-            - wget
-            - "-O"
-            - "/code/index.php"
-            - https://raw.githubusercontent.com/do-community/php-kubernetes/master/index.php
+            - /bin/sh
+            - -c
+            - mkdir -p /var/log/nginx/ && cat /usr/local/nginx/conf/nginx.conf && /usr/local/php/sbin/php-fpm && /usr/local/nginx/sbin/nginx -g 'daemon off;'
+      imagePullSecrets:
+        - name: mysecret
+      volumes:
+        - name: shares
+          persistentVolumeClaim:
+            claimName: app-shares-pvc-claim
